@@ -1,0 +1,16 @@
+<h1>Create new user</h1>
+<%= form_for @user do |item| %>
+    <%= item.label :name %>
+    <%= item.text_form :name, class: 'form-control' %>
+
+    <%= item.label :email %>
+    <%= item.email_field :email, class: 'form-control' %>
+
+    <%= item.label :password %>
+	<%= item.password_field :password, class: 'form-control' %>
+
+	<%= item.label :password_confirmation, "Confirmation" %>
+	<%= item.password_field :password_confirmation, class: 'form-control' %>
+			
+	<%= item.submit "Create my account", class: "btn btn-primary" %>
+<%= end %>
