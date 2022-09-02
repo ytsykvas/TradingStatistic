@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         
-        <%= form_for(:session, url: login_path) do |f| %>
+        <%= form_for(:session, url: new_session_path) do |f| %>
             <%= f.label :email, "Імейл" %>
             <%= f.email_field :email, class: 'form-control' %>
 
@@ -13,6 +13,6 @@
             <%= f.submit "Вхід", class: 'btn btn-primary' %>
         <% end %>
             <p></p>
-        <p>Не маєте аккаунта? <%= link_to "Реєстрація", signup_path %></p>
+        <p>Не маєте аккаунта? <%= link_to "Реєстрація", new_user_path %></p>
     </div>
 </div>

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  tax: 9.99
+  ticker: MyString
+  long_short: false
+  volume: 1
+  price_in: 9.99
+  price_out: 9.99
+
+two:
+  user_id: 1
+  tax: 9.99
+  ticker: MyString
+  long_short: false
+  volume: 1
+  price_in: 9.99
+  price_out: 9.99

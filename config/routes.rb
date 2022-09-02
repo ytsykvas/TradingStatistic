@@ -2,15 +2,17 @@ Rails.application.routes.draw do
   root 'pages#home', as: 'home'
 
   get 'about' => 'pages#about'
-  get 'home' => 'pages#home'
-  
-  resources :users
-  get 'signup' => 'users#new'
-  get 'create' => 'users#create'
+  resources :sessions
+  resources :pages
+  resources :users do
+    resources :trades
+  end
+  #get 'signup' => 'users#new'
+  #get 'create' => 'users#create'
 
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+
+  post '/sessions/new' => 'sessions#create'
+  #delete 'logout' => 'sessions#destroy'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

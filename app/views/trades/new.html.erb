@@ -1,0 +1,16 @@
+<h1>Add a new trade</h1>
+<% form_for @trade do |trade| %>
+  <div class="form-group">
+    <%= trade.label :ticker, 'Ticker:' %>
+    <%= trade.text_field :ticker, placeholder: 'Ticker' %>
+
+    <%= trade.label :volume, 'Volume:' %>
+    <%= trade.text_field :volume, placeholder: 'Volume' %>
+
+    <%= trade.label :price_in, 'Price in:' %>
+    <%= trade.text_field :price_in, placeholder: 'price ($)' %>
+
+    <%= trade.label :price_out, 'Price out:' %>
+    <%= trade.text_field :price_out, placeholder: 'price ($)' %>
+  </div>
+<% end %>
