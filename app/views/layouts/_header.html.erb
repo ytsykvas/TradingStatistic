@@ -1,53 +1,46 @@
-<div class="container">
-  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom ">
-    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-    </a>
 
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ", id="menu">
-      <li><span class="nav-link px-2 link-dark"><%= link_to 'Головна', home_path %></span></li>
-      <li><span class="nav-link px-2 link-dark"><%= link_to 'Про нас', about_path %></span></li>
-      <% if logged_in? %>
-        <li><span class="nav-link px-2 link-dark"><%= link_to 'Додати трейд', current_user %></span></li>
-      <% end %>
-    </ul>
+  <div class="b-example-divider"></div>
 
-    <% if logged_in? %>
-    <div class="drowdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">  
-        Account
-      </button>
-      <div class="dropdown-menu " aria-labelledby="dropdownMenu ">
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Действие</a></li>
-          <li><a class="dropdown-item" href="#">Другое действие</a></li>
-          <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+  <nav class="py-2 bg-light border-bottom">
+    <div class="container d-flex flex-wrap">
+      <ul class="nav me-auto">
+        <li class="nav-item font-monospace"><span class="fs-4 px-5">NiceNYSE</span></li>
+        <li class="nav-item"><%= link_to "Новини", home_path, class: "nav-link link-dark px-4"%></li>
+        <li class="nav-item"><%= link_to "Стрічка", posts_path, class: "nav-link link-dark px-4"%></li>
+        <li class="nav-item"><%= link_to "Блоги", home_path, class: "nav-link link-dark px-4"%></li>
+        <li class="nav-item"><%= link_to "Корисні посилання", home_path, class: "nav-link link-dark px-4"%></li>
+        <li class="nav-item"><%= link_to "Про нас", home_path, class: "nav-link link-dark px-4"%></li>
+        <li class="nav-item"><%= link_to "Контакти", home_path, class: "nav-link link-dark px-4"%></li>
+      </ul>
+      <% if logged_in? == false %>
+        <ul class="nav">
+          <li class="nav-item"><%= link_to "Вхід", new_session_path, class: "btn btn-dark"%></li>
+          <li class="nav-item"><%= link_to "Реєстрація", new_user_path, class: "nav-link link-dark px-2"%></li>
         </ul>
-      </div>
+      <% else %>
+        
+      <% end %>
     </div>
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0", id="menu">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret">Account </b></a>
+  </nav>
+  <% if logged_in? %>
+  <header class="py-3 mb-4 border-bottom">
+    <div class="container d-flex flex-wrap justify-content-center">
       
-          <ul class="dropdown-menu ">
-            <li><%= link_to "Profile", current_user %></li>
-            <li><%= link_to "Settings", '#' %></li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to "Log out", method: "delete" %>
-            </li>
+      
+        <ul class="nav">
+            <li class="nav-item"><%= link_to "Додати трейд", "#", class: "nav-link link-dark px-5"%></li>
+            <li class="nav-item"><%= link_to "Журнал", "#", class: "nav-link link-dark px-5"%></li>
+            <li class="nav-item"><%= link_to "Статистика", "#", class: "nav-link link-dark px-5"%></li>
+            <li class="nav-item"><%= link_to "Мій блог", "#", class: "nav-link link-dark px-5"%></li>
           </ul>
-        </li>
-    <% else %>
-      <div class="col-md-3 text-end ">
-        <button type="button" class="btn btn-outline-primary me-2 "><%= link_to 'Вхід', new_session_path %></button>
-        <button type="button" class="btn btn-primary"><%= link_to 'Реєстрація', new_user_path%></button>
-      </div>
-    <% end %>
+      
+      <div class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"></div>
+
+        <ul class="nav text-rigth">
+            <li class="nav-item"><%= link_to "Мій аккаунт", current_user, class: "btn btn-secondary"%></li>
+            <li class="nav-item"><%= link_to "Вихід", log_out_path, class: "nav-link link-dark px-2"%></li>
+          </ul>
+
+    </div>
   </header>
-</div>
-
-
-<p class="text-decoration-underline">Под этим текстом есть линия.</p>
-<p class="text-decoration-line-through">По этому тексту проходит линия.</p>
-<a href="#" class="text-decoration-none">Оформление этой ссылки удалено</a>
+  <% end %>

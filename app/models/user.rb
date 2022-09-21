@@ -1,12 +1,14 @@
 class User < ApplicationRecord
     before_save { self.email = email.downcase }
     validates :name, presence: true, length: { maximum: 50 }
+    validates :nickname, presence: true, length: { maximum: 15 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 },
       format: { with: VALID_EMAIL_REGEX },
       uniqueness: { case_sensitive: false }
     has_secure_password
     validates :password, length: {minimum: 6}
+    validates :status, length: {minimum: 5}
 
     #повертає дайджест для вказаного рядка
     def User.digest(string)
@@ -15,5 +17,6 @@ class User < ApplicationRecord
       BCrypt::Engine.cost
       BCrypt::Password.create(string, cost: cost)
     end     
-    has_many :trades, dependent: :destroy
+    
+    has_many :posts, dependent: :destroy
 end

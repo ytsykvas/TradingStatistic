@@ -1,21 +1,14 @@
 Rails.application.routes.draw do
+  resources :posts
   root 'pages#home', as: 'home'
 
   get 'about' => 'pages#about'
   resources :sessions
   resources :pages
   resources :users do
-    resources :trades
+    resources :posts
   end
-  #get 'signup' => 'users#new'
-  #get 'create' => 'users#create'
-
 
   post '/sessions/new' => 'sessions#create'
-  #delete 'logout' => 'sessions#destroy'
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'log_out' => "sessions#destroy" #видалення сесії кукіс (вихід з аккаунта)
 end

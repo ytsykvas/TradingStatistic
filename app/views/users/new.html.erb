@@ -7,17 +7,22 @@
                 <%= f.label :name, "Ім'я" %>
                 <%= f.text_field :name, class: 'form-control' %>
                 
+                <%= f.label :nickname, "Псевдонім" %>
+                <%= f.text_field :nickname, class: 'form-control' %>
 
                 <%= f.label :email, "Пошта" %>
                 <%= f.email_field :email, class: 'form-control' %>
+
+                <%= f.label :status, "Коротко про себе" %>
+                <%= f.password_field :status, class: 'form-control' %>
 
                 <%= f.label :password, "Пароль" %>
                 <%= f.password_field :password, class: 'form-control' %>
 
                 <%= f.label :password_confirmation, "Повторіть пароль" %>
                 <%= f.password_field :password_confirmation, class: 'form-control' %>
-                <p></p>
-                <%= f.submit "Створити аккаунт", class: "btn btn-primary" %>
+
+                <%= f.submit "Створити аккаунт", class: "btn btn-dark mt-3" %>
             <% end %>
                 <p></p>
                 <p>Вже маєте аккаунт? <%= link_to "Вхід", new_session_path %></p>
