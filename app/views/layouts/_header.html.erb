@@ -6,7 +6,7 @@
       <ul class="nav me-auto">
         <li class="nav-item font-monospace"><span class="fs-4 px-5">NiceNYSE</span></li>
         <li class="nav-item"><%= link_to "Новини", home_path, class: "nav-link link-dark px-4"%></li>
-        <li class="nav-item"><%= link_to "Стрічка", posts_path, class: "nav-link link-dark px-4"%></li>
+        <li class="nav-item"><%= link_to "Стрічка", "#", class: "nav-link link-dark px-4"%></li>
         <li class="nav-item"><%= link_to "Блоги", home_path, class: "nav-link link-dark px-4"%></li>
         <li class="nav-item"><%= link_to "Корисні посилання", home_path, class: "nav-link link-dark px-4"%></li>
         <li class="nav-item"><%= link_to "Про нас", home_path, class: "nav-link link-dark px-4"%></li>
@@ -26,13 +26,12 @@
   <header class="py-3 mb-4 border-bottom">
     <div class="container d-flex flex-wrap justify-content-center">
       
-      
         <ul class="nav">
             <li class="nav-item"><%= link_to "Додати трейд", "#", class: "nav-link link-dark px-5"%></li>
             <li class="nav-item"><%= link_to "Журнал", "#", class: "nav-link link-dark px-5"%></li>
             <li class="nav-item"><%= link_to "Статистика", "#", class: "nav-link link-dark px-5"%></li>
-            <li class="nav-item"><%= link_to "Мій блог", "#", class: "nav-link link-dark px-5"%></li>
-          </ul>
+            <li class="nav-item"><%= link_to "Мій блог", user_posts_path(current_user), class: "nav-link link-dark px-5"%></li>
+        </ul>
       
       <div class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"></div>
 

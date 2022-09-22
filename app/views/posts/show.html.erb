@@ -3,8 +3,10 @@
 <%= render @post %>
 
 <div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+  <%= link_to "Редагувати допис", edit_user_post_path(current_user), class: 'btn' %> |
+  <%= link_to "Мої дописи", user_posts_path(current_user), class: 'btn' %>
+</div>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+<div>
+  <%= link_to "Видалити", user_post_path(current_user), method: :delete, class: 'btn btn-danger mt-3' %>
 </div>

@@ -1,16 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Posts</h1>
+<h4><strong>Всі пости:</strong></h4>
 <% if @posts.any?%>
   <div id="posts">
     <% @posts.each do |post| %>
       <%= render post %>
       <p>
-        <%= link_to "Show this post", post %>
+        <%= link_to "Переглянути", user_post_path(current_user, post), class: "btn" %>
       </p>
     <% end %>
   </div>
 <% else %>
-  <p>No posts</p>
+  <p>Постів ще немає...</p>
 <% end %>
-<%= link_to "New post", new_post_path %>
+<%= link_to "Новий допис", new_user_post_path(current_user), class: "btn btn-dark" %>

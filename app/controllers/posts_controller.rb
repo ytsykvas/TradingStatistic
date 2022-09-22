@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
-    #@post = User.find(params[:user_id]).posts
   end
 
   # GET /posts/1 or /posts/1.json
@@ -22,8 +21,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @user = @current_user
-    @post = @user.posts.build(post_params)
+    @post = User.find(current_user.id).posts.create(post_params)
 
     respond_to do |format|
       if @post.save
