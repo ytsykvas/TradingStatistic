@@ -1,4 +1,4 @@
-<h1>Hello user</h1>
-<%= @user.each do |item| %>
-    <p><%= link_to item.name, user_path(item) %></p>
+<h1>Блоги:</h1>
+<% @users.each do |user| %>
+    <p><%= link_to user.name, user_path(user) %></p>
 <% end %>

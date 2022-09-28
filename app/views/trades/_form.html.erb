@@ -1,0 +1,47 @@
+<%= form_with(model: trade) do |form| %>
+  <% if trade.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(trade.errors.count, "error") %> prohibited this trade from being saved:</h2>
+
+      <ul>
+        <% trade.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :tax, style: "display: block" %>
+    <%= form.text_field :tax %>
+  </div>
+
+  <div>
+    <%= form.label :ticker, style: "display: block" %>
+    <%= form.text_field :ticker %>
+  </div>
+
+  <div>
+    <%= form.label :long_short, "КУПІВЛЯ/ПРОДАЖ",style: "display: block" %>
+    <%= form.select :long_short, [["КУПИТИ", "LONG"], ["ПРОДАТИ", "SHORT"]], selected: "LONG" %>
+  </div>
+
+  <div>
+    <%= form.label :volume, style: "display: block" %>
+    <%= form.number_field :volume %>
+  </div>
+
+  <div>
+    <%= form.label :price_in, style: "display: block" %>
+    <%= form.text_field :price_in %>
+  </div>
+
+  <div>
+    <%= form.label :price_out, style: "display: block" %>
+    <%= form.text_field :price_out %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

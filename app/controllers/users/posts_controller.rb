@@ -1,10 +1,16 @@
-module User
+module Users
   class PostsController < ApplicationController
     before_action :set_post, only: %i[ show edit update destroy ]
 
     # GET /posts or /posts.json
     def index
-      @posts = Post.all
+      @user = User.find(params[:user_id])
+      if logged_in? && current_user == @user
+        @posts = @user.posts
+      else
+        #redirect_to user_posts_path(current_user.id)
+        @posts = @user.posts
+      end
     end
 
     # GET /posts/1 or /posts/1.json

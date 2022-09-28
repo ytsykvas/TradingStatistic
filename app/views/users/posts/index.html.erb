@@ -2,6 +2,7 @@
 <% if logged_in? && current_user.id == session[:user_id]%>
   <%= link_to "Створити допис", new_user_post_path(current_user), class: "btn btn-dark mb-3" %>
 <% end %>
+
 <h4><strong>Всі пости:</strong></h4>
 
 <% if @posts.any?%>

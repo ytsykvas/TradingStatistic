@@ -8,7 +8,7 @@
   </p>
 
   <p>
-    <strong><%= link_to "@" + User.find(post.user_id).nickname, user_path(User.find(post.user_id)) %></strong>
+    <strong><%= link_to "@" + User.find(post.user_id).nickname, user_path(@user) %></strong>
     (<%= l(post.created_at, format: :short) %>)
     <% if post.created_at != post.updated_at %>
       <strong>*ред </strong>
