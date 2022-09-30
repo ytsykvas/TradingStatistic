@@ -39,14 +39,20 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+    if logged_in? && @post.user_id == current_user.id
+      respond_to do |format|
+        if @post.update(post_params)
+          format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
+          format.json { render :show, status: :ok, location: @post }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
+    elsif logged_in?
+      redirect_to current_user, notice: "It`s not your post"
+    else
+      redirect_to new_session_path, notice: "login or create an account"
     end
   end
 

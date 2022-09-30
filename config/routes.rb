@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :trades
   resources :posts
   root 'pages#home', as: 'home'
 
@@ -8,7 +7,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :users do
     resources :posts, controller: 'users/posts'
-    resources :trades
+    resources :trades, controller: 'users/trades' 
   end
 
   post '/sessions/new' => 'sessions#create'

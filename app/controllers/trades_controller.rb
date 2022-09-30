@@ -3,6 +3,7 @@ class TradesController < ApplicationController
 
   # GET /trades or /trades.json
   def index
+    @user = User.find(params[:id])
     @trades = Trade.all
   end
 
@@ -22,7 +23,6 @@ class TradesController < ApplicationController
   # POST /trades or /trades.json
   def create
     @trade = Trade.new(trade_params)
-
     respond_to do |format|
       if @trade.save
         format.html { redirect_to trade_url(@trade), notice: "Trade was successfully created." }
