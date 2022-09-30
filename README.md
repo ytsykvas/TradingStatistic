@@ -1,24 +1,5 @@
-# README
+1) Я відрефакторив controler/users/posts
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+2) Почав реалізовувати /users/trades_controller. Там виникла помилка, у вюсі users/trades/_form плюєтсья на перший рядок вюхи (на екшені NEW). Пробував виправити, не получилось поки
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Загальний контролер з вюхами видалив, лишив тільки вкладений контролер з його вюхами.З роутами все наче правильно, не бачу де мій затуп.
