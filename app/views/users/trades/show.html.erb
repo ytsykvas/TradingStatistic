@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @trade %>
+
+<div>
+  <%= link_to "Edit this trade", edit_user_trade_path(current_user, @trade) %> |
+  <%= link_to "Back to trades", user_trades_path %>
+  <%= button_to "Destroy this trade", user_trade_path(current_user), method: :delete %>
+</div>

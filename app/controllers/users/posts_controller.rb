@@ -1,16 +1,10 @@
 module Users
   class PostsController < ApplicationController
     before_action :set_post, only: %i[ show edit update destroy ]
-
+    before_action :set_user, only: %i[ index create ]
     # GET /posts or /posts.json
     def index
-      @user = User.find(params[:user_id])
-      if logged_in? && current_user == @user
         @posts = @user.posts
-      else
-        #redirect_to user_posts_path(current_user.id)
-        @posts = @user.posts
-      end
     end
 
     # GET /posts/1 or /posts/1.json
@@ -28,9 +22,7 @@ module Users
 
     # POST /posts or /posts.json
     def create
-      @user = User.find(params[:user_id])
-      @post = @user.posts.create(post_params)
-
+      @post = @user.posts.build(post_params)
       respond_to do |format|
         if @post.save
           format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
@@ -44,31 +36,42 @@ module Users
 
     # PATCH/PUT /posts/1 or /posts/1.json
     def update
-      respond_to do |format|
-        if @post.update(post_params)
-          format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
-          format.json { render :show, status: :ok, location: @post }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
+      if logged_in? && @post.user_id == current_user.id
+        respond_to do |format|
+          if @post.update(post_params)
+            format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
+            format.json { render :show, status: :ok, location: @post }
+          else
+            format.html { render :edit, status: :unprocessable_entity }
+            format.json { render json: @post.errors, status: :unprocessable_entity }
+          end
         end
+      else
+        redirect_to new_session_path
       end
     end
 
     # DELETE /posts/1 or /posts/1.json
     def destroy
-      @post.destroy
-
-      respond_to do |format|
-        format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-        format.json { head :no_content }
+      if logged_in? && @post.user_id == current_user.id
+        @post.destroy
+        respond_to do |format|
+          format.html { redirect_to posts_url, notice: "Допис видалено" }
+          format.json { head :no_content }
+        end
+      else
+        redirect_to new_session_path, notice: "Ввійдіть в аккаунт або створіть його"
       end
     end
 
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = Post.find(params[:id])
+        @post = @user.posts.find(params[:id])
+      end
+
+      def set_user
+        @user = User.find(params[:user_id])
       end
 
       # Only allow a list of trusted parameters through.

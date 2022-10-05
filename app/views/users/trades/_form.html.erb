@@ -1,4 +1,5 @@
-<%= form_with(model: trade) do |form| %>
+<%= form_with model: @trade do |form| %>
+
   <% if trade.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(trade.errors.count, "error") %> prohibited this trade from being saved:</h2>
