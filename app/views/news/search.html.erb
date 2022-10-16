@@ -1,8 +1,15 @@
-<h1>SEARCH</h1>
-<div class="container">
-  <div class="row mt-5">
-    <div class="col-lg-6">
-      <h1>Word`s associations:</h1>
-        <h1><%=  %></h1>
-        <p><%= @words %></p>
-    </div>
+<h1>Останні новини $<%= params[:ticker].upcase %></h1>
+
+<% if @news.empty?%>
+  <p>Can`t find news or wrong ticker!</p>
+<% else %>
+
+  <%= @news.each do |news| %>
+    <h5 class="mt-5"><%= news[:title] %></h5>
+    <figcaption class="blockquote-footer mt-2">
+      <cite title="Source Title"> <%= news[:published_date] %> </cite>
+    </figcaption>
+    <%= link_to "ЧИТАТИ", news[:link], class: "btn btn-primary" %>
+  <% end %>
+
+<% end %>
