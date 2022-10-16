@@ -1,5 +1,5 @@
 class Trade < ApplicationRecord
-  belongs_to :user, foreign_key: true
+  belongs_to :user
 
   validates :tax, presence: :true
   validates :ticker, presence: :true

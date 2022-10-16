@@ -1,31 +1,39 @@
 <div id="<%= dom_id trade %>">
-  <p>
-    <strong>Tax:</strong>
-    <%= trade.tax %>
-  </p>
 
+  <h4> 
+    <%= trade.ticker %>
+    (<%= l(trade.created_at, format: :short)%>)
+  </h4>
   <p>
-    <strong>Ticker:</strong>
+    <strong>Тікер:</strong>
     <%= trade.ticker %>
   </p>
 
   <p>
-    <strong>Long short:</strong>
+    <strong>Комісія:</strong>
+    <%= trade.tax %>
+  </p>
+
+
+
+  <p>
+    <strong>Купівля/продаж:</strong>
     <%= trade.long_short %>
   </p>
 
   <p>
-    <strong>Volume:</strong>
+    <strong>Об'єм:</strong>
     <%= trade.volume %>
+    sh.
   </p>
 
   <p>
-    <strong>Price in:</strong>
+    <strong>Ціна входу:</strong>
     <%= trade.price_in %>
   </p>
 
   <p>
-    <strong>Price out:</strong>
+    <strong>Ціна виходу:</strong>
     <%= trade.price_out %>
   </p>
 

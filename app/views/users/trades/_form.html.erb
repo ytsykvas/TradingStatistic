@@ -1,5 +1,5 @@
-<%= form_with model: @trade do |form| %>
 
+<%= form_with model: @trade, url: user_trades_path(current_user.id), method: :post do |form| %>
   <% if trade.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(trade.errors.count, "error") %> prohibited this trade from being saved:</h2>
@@ -43,6 +43,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Зберегти", class: 'btn btn-success mt-3'  %>
   </div>
 <% end %>

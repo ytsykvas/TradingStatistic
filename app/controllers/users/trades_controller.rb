@@ -14,6 +14,7 @@ module Users
 
     # GET /trades/new
     def new
+      #@trade = current_user.trades.new
       @trade = current_user.trades.new
     end
 
@@ -26,12 +27,12 @@ module Users
       if logged_in?
         @trade = current_user.trades.build(trade_params)
       else 
-        redirect_to user_trades_path
+        redirect_to home_path
       end
 
       respond_to do |format|
         if @trade.save
-          format.html { redirect_to user_trades_url(@trade), notice: "Trade was successfully created." }
+          format.html { redirect_to user_trade_url(current_user, @trade), notice: "Trade was successfully created." }
           format.json { render :show, status: :created, location: @trade }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -58,7 +59,7 @@ module Users
       @trade.destroy
 
       respond_to do |format|
-        format.html { redirect_to trades_url, notice: "Trade was successfully destroyed." }
+        format.html { redirect_to user_trades_url, notice: "Trade was successfully destroyed." }
         format.json { head :no_content }
       end
     end
@@ -67,7 +68,7 @@ module Users
     
       # Use callbacks to share common setup or constraints between actions.
       def set_trade
-        @trade = Trade.find(params[:id])
+        @trade = current_user.trades.find(params[:id])
         #@trade = current_user.trades.find(params[:id]) # here on 
       end
 
