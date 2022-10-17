@@ -1,14 +1,15 @@
-<h1>Останні новини $<%= params[:ticker].upcase %></h1>
+<h1>Останні новини $<%= params[:ticker].upcase %> (<%= @news.count %>шт)</h1>
 
 <% if @news.empty?%>
-  <p>Can`t find news or wrong ticker!</p>
-<% else %>
 
-  <%= @news.each do |news| %>
-    <h5 class="mt-5"><%= news[:title] %></h5>
-    <figcaption class="blockquote-footer mt-2">
-      <cite title="Source Title"> <%= news[:published_date] %> </cite>
-    </figcaption>
+  <p>Немає новин або не вірний тікер.</p>
+
+<% else %>
+  <% i = 0 %>
+  <% @news.map do |news| %>
+    <h5 class="mt-5"><%= i += 1 %>. <%= news[:title] %></h5>
+    <p>Published: <%= news[:author] %> (<%= news[:published_date] %>) </p>
+    <p>Source: <%= news[:clean_url] %></p>
     <%= link_to "ЧИТАТИ", news[:link], class: "btn btn-primary" %>
   <% end %>
 
