@@ -22,6 +22,9 @@
                 <%= f.label :password_confirmation, "Повторіть пароль" %>
                 <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+                <%= f.label :balance, "Стартовий баланс торгового рахунку = 20.000$"%>
+                <%= f.hidden_field :balance, value: 20000 %>
+
                 <%= f.submit "Створити аккаунт", class: "btn btn-dark mt-3" %>
             <% end %>
                 <p></p>

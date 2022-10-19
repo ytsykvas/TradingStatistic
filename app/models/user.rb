@@ -4,7 +4,8 @@ class User < ApplicationRecord
     validates :name, presence: true, length: { maximum: 50 }
     validates :nickname, presence: true, length: { maximum: 15 }
     validates :status, length: {minimum: 5}
-
+    validates :balance, presence: true, acceptance: {accept: [20000] }
+    
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 },
       format: { with: VALID_EMAIL_REGEX },
